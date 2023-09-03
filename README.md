@@ -8,20 +8,9 @@ The Suricata tool monitors network interfaces and applies rules to the packets t
 
 Source and destination networks must be specified in the Suricata configuration. Custom rules can be written to specify which traffic should be processed.
 
-<h2>Task 1. Examin a custom rule in Suricata<h2>
-  
-  The <i>/home/analyst</i> directory contains a <i>custom.rules</i> file that defines the network traffic rules, which Suricata captures.
 
-In this task, I explored the composition of the Suricata rule defined in the <i>custom.rules</i> file. <br>
 
-<img src="https://github.com/Bridgetanntighe/Filter-SQL-II/assets/134883216/bdfda8d9-0f8e-4787-b7c9-f8951fd6a6be" height="90%" width="90%" alt="Active Directory Lab"/><br>
-The <i>less</i> command can also be used to read file content one page at a time, making it useful for reading lengthy output.<br>
-
-<img src="https://github.com/Bridgetanntighe/Filter-SQL-II/assets/134883216/e59a20af-5a74-44cc-aec1-927656230cb4" height="70%" width="70%" alt="Active Directory Lab"/><br>
-
-The <b>action</b> is the first part of the signature. It determines the action to take if all conditions are met.<br>
-
-<h2>Task 2.Trigger a custom rule in Suricata  </h2>
+<h2>Trigger a custom rule in Suricata  </h2>
 
 <img src="https://github.com/Bridgetanntighe/Filter-SQL-II/assets/134883216/fdb13e1e-c6d7-4473-8f43-ee73cc2c3841" height="90%" width="90%" alt="Active Directory Lab"/><br>
 Before running Suricata, there are no files in the <i>/var/log/suricata</i> directory. <br>
@@ -42,8 +31,35 @@ Each line or entry in the <i>fast.log</i> file corresponds to an alert generated
 
 
 <h2>Task 3. Examine eve.json output</h2>
-The IP address 142.250.1.139 is displayed in the expanded Answers section for the DNS query for opensource.google.com.
+In this task, I examined the additional output that Suricata generates in the <i>eve.json</i> file.<br>
+As previously mentioned, this file is located in the <i>/var/log/suricata/</i> directory.<br>
+(screenshot of cat)
+1. Using the <i>cat</i>command to display the entries in the <i>eve.json</i>file:
+<img src="https://github.com/Bridgetanntighe/FilterSQLTheory/assets/134883216/e240ad3a-0a09-4e60-9c7c-d67b512c4afe" height="80%" width="80%" alt="Active Directory Lab"/><br>
+The output returns the raw content of the file. There is a lot of data returned and is not easy to understand in this format.<br>
+2. I then used the <i>jq</i> command to display the entries in an improved format.<br>
+(screenshot of this format)
 <img src="https://github.com/Bridgetanntighe/FilterSQLTheory/assets/134883216/e240ad3a-0a09-4e60-9c7c-d67b512c4afe" height="80%" width="80%" alt="Active Directory Lab"/>
+It is now much easier to read the output as opposed to the <i>cat</i> command output <br>
+<b>Note:</b><i>The jq tool is very useful for processing JSON data, however, a full explanation of its capabilities is outside of the scope of this lab.<br></i>
+It shows the value of the severity property for the first alert is 3.<br>
+<br>
+3. Press <b>Q</b> to exit the <i>less</i> command and to return to the command-line prompt.
+(show screenshot of this)
+<img src="https://github.com/Bridgetanntighe/FilterSQLTheory/assets/134883216/e240ad3a-0a09-4e60-9c7c-d67b512c4afe" height="80%" width="80%" alt="Active Directory Lab"/><br>
+
+4.Below I used the <i>jq</i> command to extract specific data from the <i>eve.json</i>file:
+<img src="https://github.com/Bridgetanntighe/FilterSQLTheory/assets/134883216/e240ad3a-0a09-4e60-9c7c-d67b512c4afe" height="80%" width="80%" alt="Active Directory Lab"/>
+<b><i>Note:</b>: The jq command above extracts the fields specified in the list in the square brackets from the JSON payload. The fields selected are the timestamp (.timestamp), the flow id (.flow_id), the alert signature or msg (.alert.signature), the protocol (.proto), and the destination IP address (.dest_ip).</i> 
+The destination IP address is 142.250.1.102.<br>
+The first event in the eve.json file has "GET on WIRE" as the alert signature.<br>
+<img src="https://github.com/Bridgetanntighe/FilterSQLTheory/assets/134883216/e240ad3a-0a09-4e60-9c7c-d67b512c4afe" height="80%" width="80%" alt="Active Directory Lab"/><br>
+ 
+5. Use the jq command to display all event logs related to a specific flow_id from the eve.json file. The flow_id value is a 16-digit number and will vary for each of the log entries. Replace X with any of the flow_id values returned by the previous query:
+<img src="https://github.com/Bridgetanntighe/FilterSQLTheory/assets/134883216/e240ad3a-0a09-4e60-9c7c-d67b512c4afe" height="80%" width="80%" alt="Active Directory Lab"/><br>
+
+<b><i>Note:</b>A network flow refers to a sequence of packets between a source and destination that share common characteristics such as IP addresses, protocols, and more. In cybersecurity, network traffic flows help analysts understand the behavior of network traffic to identify and analyze threats. Suricata assigns a unique flow_id to each network flow. All logs from a network flow share the same flow_id. This makes the flow_id field a useful field for correlating network traffic that belongs to the same network flows.</i>
+
 
 <h2>Conclusion</h2>
 This filters to packets containing web requests made with the <i>curl</i> command in this sample packet capture file.
