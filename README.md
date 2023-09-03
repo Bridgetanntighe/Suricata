@@ -33,7 +33,7 @@ The <i>-k none</i> option instructs Suricata to disable all checksum checks.<br>
 Suricata adds a new alert line to the <i>/var/log/suricata/fast.log</i> file when all the conditions in any of the rules are met.<br>
 <br>
 Below I then listed the files in the <i>/var/log/suricata</i> folder again:<br>
-<img src="https://github.com/Bridgetanntighe/Filter-SQL-II/assets/134883216/debe8797-1b17-4aa0-bbff-f2e0d6f9e54f" height="80%" width="80%" alt="Active Directory Lab"/><br>
+<img src="https://github.com/Bridgetanntighe/Filter-SQL-II/assets/134883216/debe8797-1b17-4aa0-bbff-f2e0d6f9e54f" height="60%" width="60%" alt="Active Directory Lab"/><br>
 After running Suricata, there are now four files in the <i>/var/log/suricata</i> directory, including the <i>fast.log</i> and <i>eve.json</i> files.<br>
 <br>
 Lets examine these files in more detail:<br>
