@@ -1,4 +1,4 @@
-<h1>Expamine alerts, logs and rules with Suricata  </h1>
+<h1>Examine alerts, logs and rules with Suricata  </h1>
 
 
 <h2>Description</h2>
