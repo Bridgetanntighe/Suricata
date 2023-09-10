@@ -40,7 +40,7 @@ Let's examine each component in more detail
 <B>Acion</b>
 <br>
 The action is the first part of the signature. It determines the action to take if all conditions are met.
-<img src="https://github.com/Bridgetanntighe/Suricata/assets/134883216/f0cde3e2-154d-486f-93c1-cb9e4a8b3fa9" height="80%" width="80%" alt="Suricata"/><br>
+<img src="https://github.com/Bridgetanntighe/Suricata/assets/134883216/f0cde3e2-154d-486f-93c1-cb9e4a8b3fa9" height="60%" width="60%" alt="Suricata"/><br>
 Actions differ across network intrusion detection system (NIDS) rule languages, but some common actions are ```alert```, ```drop```, ```pass```, and ```reject```.
 
 The file contains a single alert as the action. The ```alert``` keyword instructs to alert on selected network traffic. The IDS will inspect the traffic packets and send out an alert in case it matches.
@@ -52,7 +52,7 @@ The ```reject``` action does not allow the traffic to pass. Instead, a TCP reset
 <br>
 
 <b>Header</b><br>
-<img src="https://github.com/Bridgetanntighe/Suricata/assets/134883216/bb586b41-582f-4189-999c-32faa9489b50" height="80%" width="80%" alt="Active Directory Lab"/><br>
+<img src="https://github.com/Bridgetanntighe/Suricata/assets/134883216/bb586b41-582f-4189-999c-32faa9489b50" height="60%" width="60%" alt="Active Directory Lab"/><br>
 The next part of the signature is the <b>header</b>. The header defines the signature’s network traffic, which includes attributes such as protocols, source and destination IP addresses, source and destination ports, and traffic direction.
 <br>
 The next field after the action keyword is the protocol field. The protocol is ```http```, which determines that the rule applies only to HTTP traffic.
