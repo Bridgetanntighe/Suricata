@@ -112,7 +112,7 @@ directory.<br>
 
 1. Using the ``` cat ``` command to display the entries in the ``` eve.json ``` file:
 
-<img src="https://github.com/Bridgetanntighe/Suricata/assets/134883216/51abc9d1-1082-4ccc-9e13-30984905ab16" height="80%" width="80%" alt="Active Directory Lab"/><br>
+<img src="https://github.com/Bridgetanntighe/Suricata/assets/134883216/51abc9d1-1082-4ccc-9e13-30984905ab16" height="100%" width="100%" alt="Active Directory Lab"/><br>
 The output returns the raw content of the file. There is a lot of data returned and is not easy to understand in this format.<br>
 2. I then used the ``` jq ``` command to display the entries in an improved format.<br>
 <img src="https://github.com/Bridgetanntighe/Suricata/assets/134883216/13dafeea-55bf-490f-9cf1-4f703c837569" height="50%" width="50%" alt="Active Directory Lab"/> <br>
@@ -124,12 +124,13 @@ It is now much easier to read the output as opposed to the ```cat``` command out
 <img src="https://github.com/Bridgetanntighe/Suricata/assets/134883216/13607535-47fc-4fcb-baaa-d389db5dccf2" height="80%" width="80%" alt="Active Directory Lab"/> <br>
 <b><i>Note:</b> The ``` jq```  command above extracts the fields specified in the list in the square brackets from the JSON payload. The fields selected are the timestamp ``` (.timestamp)``` , the flow id ``` (.flow_id) ```, the alert signature or msg ``` (.alert.signature) ```, the protocol ```(.proto)```, and the destination IP address ```(.dest_ip)```.</i> <br>
 The destination IP address is ```142.250.1.102```.<br>
-The first event in the eve.json file has "GET on WIRE" as the alert signature.<br>
+The first event in the ```eve.json``` file has ```"GET on WIRE"``` as the alert signature.<br>
 
 4. The ```jq``` command to display all event logs related to a specific ```flow_id``` from the ```eve.json``` file. The ```flow_id``` value is a 16-digit number and will vary for each of the log entries.
 <img src="https://github.com/Bridgetanntighe/Suricata/assets/134883216/eaf5832f-5841-407c-8cd3-ccdf886d02ef" height="80%" width="80%" alt="Active Directory Lab"/><br>
 <br>
-<b><i>Note:</b> A network flow refers to a sequence of packets between a source and destination that share common characteristics such as IP addresses, protocols, and more. In cybersecurity, network traffic flows help analysts understand the behavior of network traffic to identify and analyze threats. Suricata assigns a unique ```flow_id``` to each network flow. All logs from a network flow share the same ```flow_id```. This makes the ```flow_id``` field a useful field for correlating network traffic that belongs to the same network flows. </i>
+
+<b>Note:</b> A network flow refers to a sequence of packets between a source and destination that share common characteristics such as IP addresses, protocols, and more. In cybersecurity, network traffic flows help analysts understand the behavior of network traffic to identify and analyze threats. Suricata assigns a unique ```flow_id``` to each network flow. All logs from a network flow share the same ```flow_id```. This makes the ```flow_id``` field a useful field for correlating network traffic that belongs to the same network flows.
 
 
 <h2>Conclusion</h2>
